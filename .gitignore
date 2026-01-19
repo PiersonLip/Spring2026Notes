@@ -1,0 +1,12 @@
+*.gz
+*.aux
+*.log
+*.glg
+*.glo 
+*.gls 
+*.ist
+*.toc
+*.out
+*.md5
+*.dpth
+*.auxlock
