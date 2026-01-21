@@ -10,3 +10,5 @@
 *.md5
 *.dpth
 *.auxlock
+*.fls
+*.fdb_latexmk
