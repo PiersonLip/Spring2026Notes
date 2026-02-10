@@ -1,0 +1,116 @@
+a) sqrt((3a^2)/2 + 1/2a^2)
+
+(9a^2)/2 + 1/4a^2 
+
+sqrt(10a^2/4)
+
+sqrt(5)/2
+
+e1 = 2ka/5a^2
+
+e2 = 4ka/5a^2
+
+
+b)
+
+asin((1/2)a/sqrt(3a^2 +1/2a^2))
+
+acos(3/2a/sqrt(3a^2 +1/2a^2))
+
+atan((a/2)/((3/2)a))
+
+atan(1/3)
+
+
+
+c) 
+
+-2ka/5a^2 * cos(theta) -> -2ka/5a^2 * 3/sqrt(10)
+
+2ka/5a^2 * sin(theta)  -> -2ka/5a^2 * 1/sqrt(10)
+
+d)
+
+
+
+e)
+
+
+
+problem C)
+
+solving for y component 
+
+Eq,y = kq/r^2 * sin(theta)
+
+r = sqrt(1/4d^2 + h^2)
+
+sin(theta) = h/sqrt(1/4d^2 + h^2)
+
+E = 2kqQ/sqrt(1/4d^2 + h^2)^2 * sin(theta)
+
+E = 2kqQ/(1/4d^2 + h^2) * h/sqrt(1/4d^2 + h^2)
+
+E = 2kqQh / (1/4d^2 + h^2)^(3/2)
+
+mg = 2kqQh / (1/4d^2 + h^2)^(3/2)
+
+mg = 2kqQh / (1/4d^2 + h^2)^(3/2)
+
+q = ???
+
+
+b) 
+h -> inf 
+q -> inf 
+
+
+c) stable
+
+d) yes 
+
+e) yes 
+
+f) no
+
+
+problem a)
+
+Q 
+|
+\/
+/\
+|
+A 
+
+b) 
+
+fb>fa>fc>fd
+
+c) 
+density of the field lines 
+
+d) 
+
+F = kQ/r_a^2
+
+e) 
+Qx2, doubles 
+qx2, same 
+
+Test charges do not feel any field from themeselves
+F = qE
+
+f) 
+
+a>b>c 
+b 
+
+
+problem D)
+b)
+forms a horizontal line, weakest in the very center where both pairs cancel  
+c)
+towards a horizontal small line (eletroncs are negative, so they stretch horizontally) 
+d) forms a small point/sphere, helps concerate them
+

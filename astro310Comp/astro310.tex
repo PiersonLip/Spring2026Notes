@@ -266,6 +266,25 @@ description={test}
 
     \maketitle
     \tableofcontents
+    
+    \pagebreak
+    \section{Shell}
+    \hrule
+    \vspace{.5cm}
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+     Command & Action& Use\\
+    \hline
+      \verb|>| & feeds command output in a file& \verb|help > help.txt|\\ 
+    \hline
+      \verb|>>|&appends command output to a file & \verb|help >> helpandMore.txt|\\
+    \hline 
+      \verb|<| & reads input into another command & \verb|grep a < alphabet.txt|\\
+    \hline
+    \end{tabular}
+    \end{center}
 
     \pagebreak
     \section{Regex}
@@ -306,10 +325,41 @@ description={test}
     \end{center}
 
     \pagebreak
+    \section{Find}
+    \hrule
+    \vspace{.5cm}
+    Used for finding files. Does NOT use regex unless \verb|-regex| is spec. By default uses glob
+
+    \begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    Var & Use \\
+    \hline
+    \verb|+iname| & case-insensitive match \\
+    \hline
+    \verb|+regex| & uses regex!\\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    \subsection{Examples}
+    \begin{center}
+    \begin{tabular}{|c|p{8cm}|}
+    \hline
+    Var & Use \\
+    \hline
+      \verb|find . -iname '*q*'| & Find all files that have a q in their name at any point \\
+    \hline
+      \verb|find . -iregex '.*q.*'| & Find all files that have a q in their name at any point \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    \pagebreak
     \section{Grep}
     \hrule
     \vspace{.5cm}
-    
+    Used for finding content \textit{in} file s
 
 
     \begin{center}
