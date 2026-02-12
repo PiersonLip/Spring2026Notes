@@ -193,3 +193,85 @@ Four point charges 2q, q, q, and q are placed at the corners of a rectangle of d
 \end{example}
 
 
+\pagebreak
+\section{D4}
+\hrule
+\vspace{.5cm}
+
+
+\begin{example}
+    \begin{center}
+        \textbf{Electric Potential in a System with Cylindrical Symmetry}
+    \vspace{.2cm}
+    
+    \hrule
+    \vspace{.5cm}
+
+    \begin{tikzpicture}
+    % Outer shell shading
+    \draw[gray!80, pattern=north east lines, pattern color = white!50!black] (0,0) circle (2.5cm);
+    \fill[black!85] (0,0) circle (1.8cm);
+    \draw (0,0) circle (1.8cm);
+    \draw (0,0) circle (2.5cm);
+
+    
+    % Inner cylinder
+    \fill[blue!80] (0,0) circle (1cm);
+    \draw (0,0) circle (1cm);
+    
+    % Labels and vectors
+    \draw[->] (0,0) -- (30:1cm) node[midway, below] {$a$};
+    \draw[->] (0,0) -- (110:1.8cm) node[midway, above left] {$b_1$};
+    \draw[->] (0,0) -- (150:2.5cm) node[midway, below left] {$b_2$};
+    
+    \node at (0,-0.3) {$\rho$};
+    \node[align=right] at (4, 0) {conducting shell, \\ uncharged};
+    \draw[->] (3.2, -0.2) -- (2.1, -0.5);
+    
+    \node[align=left] at (-3.3, -1) {$V=0$};
+    \draw[->] (-2.7, -1) -- (-2.4, -.95);
+
+    \node at (4, 2) {
+        \boxed{
+            \begin{tabular}{r}
+                $a = 3 \text{cm}$ \\
+                $b_1 = 6 \text{cm}$ \\
+                $b_2 = 8 \text{cm}$ \\
+                $\rho = +7.5 \text{ C/m}^3$
+            \end{tabular}
+        }
+    };
+
+    \end{tikzpicture}
+
+    \textbf{Find the potential at r = 10cm}
+
+    Find the energy enclosed using Gauss's Law ({\ref{eq:GausssLaw})
+    }
+    \[\int \vec{E} dS = \frac{Q_{enc}}{\epsilon_0}\]
+    \[
+    \lambda = \rho * \pi *a^2
+    \]
+    \[
+    Q_{enc} = \rho \pi a^2 L 
+    \]
+    \[
+    E (2\cancel{\pi} r) = \rho \cancel{\pi} a^2
+    \]
+    \[
+    E = \frac{\rho a^2 }{2\epsilon_0 r}
+    \]
+    \[
+    V(r) = \int_r^{b_2} \frac{\rho a^2 }{2\epsilon_0 r}
+    \]
+    \[
+    V(r) = \frac{\rho a^2 }{2\epsilon_0}\ln\left(\frac{b_2}{r}\right)
+    \]
+    
+
+    \end{center}
+
+    
+
+
+\end{example}
