@@ -1,0 +1,92 @@
+\pagebreak
+\section{Kirchhoff's Rules}
+\hrule
+\vspace{.5cm}
+
+\begin{eqboxed}{eq:KirchhoffVoltageRule}{Kirchhoff Voltage Rule}
+{In a \textit{\textbf{closed}} circuit, if you return to the same location, no matter what path you take, the change in voltage will be 0. Very similar to conservation of energy in a magnetic field.}
+\sum\Delta V_n = 0 
+\end{eqboxed}
+
+\begin{eqboxed}{eq:KirchhoffCurrentRule}{Kirchhoff Current Rule}
+{At any node (location where two or more paths/wires meet), the current in must be equal to the current out (of said node)}
+\boxed{\sum I_{in} = \sum I_{out}}, \text{at any node}
+\end{eqboxed}
+
+\begin{example}
+    \textbf{Single Loop Example\label{ex:SingleLoopExample}}
+    \vspace{.2cm}
+    \hrule 
+    \vspace{.2cm}
+
+    \begin{center}
+        \begin{tikzpicture}[american]
+            % Draw the main loop
+            \draw (0,0) 
+                to[battery1, l=$V_b$, invert] (0,6) % Battery on the left
+                to[short, i=$I$, -*] (4,6) node[anchor=south west] {a} % Top wire with current arrow
+                to[R, l=$R_1$, v=$+$, -*] (4,3) node[anchor=west] {b} % Resistor 1
+                to[R, l=$R_2$, v=$+$, -*] (4,0) node[anchor=north west] {c} % Resistor 2
+                to[short, i=$I$] (0,0); % Bottom wire with current arrow
+        \end{tikzpicture}
+
+        Can be simply solved by using Ohms law and doing \(I = \frac{V_b}{R_1 +R_2}\), or using Kirchhoff\\ 
+        \vspace{.25cm}
+        Using Kirchhoff's Voltage Rule (\ref{eq:KirchhoffVoltageRule}) we find the drop in current between \(a \rightarrow b \rightarrow c \rightarrow V_b\)
+        \[\Delta V_1 = +IR_1, \quad \Delta V_1 = +IR_2, \quad \Delta V_1 = -V_b\]
+        \[ IR_1 + IR_2 - V_b = 0 \quad \rightrightarrows \quad I = \frac{V_b}{R_1 +R_2 }\]
+    \end{center}
+\end{example}
+
+\begin{example}
+    \textbf{Two Loop Example\label{ex:TwoLoopExample}}
+    \vspace{.2cm}
+    \hrule
+    \vspace{.2cm}
+    \begin{center}
+        
+            \begin{tikzpicture}[american, scale=1.2]
+                % Coordinates
+                \coordinate (bottom_left) at (0,0);
+                \coordinate (top_left) at (0,4);
+                \coordinate (a) at (4,4);
+                \coordinate (b) at (4,0);
+                \coordinate (c) at (7,0);
+                \coordinate (top_right) at (7,4);
+
+                % Left Loop: V1 and R1 (with polarity)
+                \draw (bottom_left) to[battery1, l=$V_1$, invert] (top_left)
+                    (top_left) -- (a);
+                \draw (b) to[R, l=$R_1$, v^>=$ $] (bottom_left); % v label adds the +/-
+
+                % Middle Branch: R2 (with polarity)
+                \draw (b) to[R, l=$R_2$, v_<=$ $] (a);
+
+                % Right Branch: R3 (with polarity) and V2
+                \draw (a) -- (top_right)
+                    (top_right) to[R, l=$R_3$, v^>=$ $] ++(0,-2)
+                    to[battery1, l=$V_2$] (c)
+                    (c) -- (b);
+
+                % Nodes a, b, c
+                \fill (a) circle (1.5pt) node[above] {a};
+                \fill (b) circle (1.5pt) node[below] {b};
+                \fill (c) circle (1.5pt) node[below] {c};
+
+                % Current arrows (Blue)
+                \draw[white, thick, ->, >=stealth] (1.5, 4.3) -- (2.5, 4.3) node[midway, above] {$I_1$};
+                \draw[white, thick, ->, >=stealth] (2.5, -0.75) -- (1.5, -0.75) node[midway, below] {$I_1$};
+                \draw[white, thick, ->, >=stealth] (3.6, 3.5) -- (3.6, 2.5) node[midway, left] {$I_2$};
+                \draw[white, thick, ->, >=stealth] (7.4, 2.5) -- (7.4, 1.5) node[midway, right] {$I_3$};
+
+            \end{tikzpicture}
+
+        Using Kirchhoff's Current Rule(\ref{eq:KirchhoffCurrentRule}) we find that \(I_1 + I_2 +I_3 = 0\). To solve this we need equations with \(I_1, I_2, I_3\)
+
+        Using Kirchhoff's Voltage Rule (\ref{eq:KirchhoffVoltageRule}) on the \textit{outer} loop we get 
+        \[I_3R_3 + V_2 + I_3R_1 - V_1\]
+        On the inner/left loop 
+        \[I_2R_2 + I_1R_1 -V_1\]
+    \end{center}
+
+\end{example}
