@@ -1,0 +1,103 @@
+\pagebreak
+\section{Forces and Torques on Currents}
+\hrule
+\vspace{.5cm}
+
+\begin{eqboxed}{eq:ForceOnACurentCarryingWire}{Force on a Current Carrying Wire}
+{}
+\vec{F} = I\vec{L} \times \vec{B}
+\end{eqboxed}
+
+\begin{example}
+\textbf{Force on a Curved Wire Segment}
+\vspace{.25cm}
+\hrule
+\vspace{.25cm}
+    \begin{center}
+        \begin{tikzpicture}[>=Stealth, scale=1.2]
+            % 1. Draw Magnetic Field Lines (B) - Green
+            \foreach \y in {0, 0.6, 1.2, 1.8, 2.4} {
+                \draw[thick, black!20!white, ->] (0, \y) -- (10, \y);
+            }
+            \node[black!20!white, scale=1.8] at (9.6, 2.1) {$B$};
+
+            % 2. Define the path of the wire (using a smooth plot/coordinates)
+            \coordinate (p1) at (0.5, 0.4);
+            \coordinate (p2) at (1, 0.8);
+            \coordinate (p3) at (1.5, 1.15);
+            \coordinate (p4) at (2.2, 1.3);
+            \coordinate (p5) at (3, 1.15);
+            \coordinate (p6) at (3.8, 0.9);
+            \coordinate (p7) at (4.5, 1.1);
+            \coordinate (p8) at (5.3, 1.55);
+            \coordinate (p9) at (6, 1.9);
+            \coordinate (p10) at (6.8, 2.1);
+            \coordinate (p11) at (7.5, 1.95);
+            \coordinate (p12) at (8.3, 1.7);
+            \coordinate (p13) at (9, 1.3);
+            \coordinate (p14) at (9.6, 0.9);
+
+            \def\wire{(p1) .. controls (1.2, 1.5) and (2.5, 1.5) .. (3.5, 1) 
+                        .. controls (4.5, 0.5) and (5.5, 2.5) .. (7.5, 2) 
+                        .. controls (8.5, 1.5) and (9.5, 1.2) .. (p14)}
+
+            % 3. Draw the Blue Wire
+            \draw[blue!70!white, very thick] \wire;
+
+            % 4. Add the Force Vectors (Vertical Arrows) and Nodes
+            % We use a loop over the specific points to place arrows
+            \foreach \p/\dir in {p1/1, p2/1, p3/1, p4/1, p5/-1, p6/-1, p7/-1, p8/1, p9/1, p10/1, p11/1, p12/-1, p13/-1, p14/-1} {
+                % Small black squares
+                \fill (\p) +(-1.5pt,-1.5pt) rectangle +(1.5pt,1.5pt);
+                % Vertical force arrows (scaled by \dir for up/down)
+                \draw[gray!80!black, ->, thick] (\p) -- ++(0, {\dir*0.4});
+            }
+
+            % 5. Add Blue Directional Arrows on the wire
+            \foreach \pos in {0.05, 0.2, 0.35, 0.5, 0.65, 0.8, 0.95} {
+                \begin{scope}[decoration={markings, mark=at position \pos with {\arrow[blue!70!white, scale=1.2]{>}}}]
+                    \path[postaction={decorate}] \wire;
+                \end{scope}
+            }
+
+            % 6. Labels
+            % Current I
+            \draw[blue!70!white, thick, ->] (0.7, 1.1) -- (1.3, 1.5) node[above left] {$I$};
+            % Differential element ds
+            \node[below right] at (p9) {$d\vec{s}$};
+
+        \end{tikzpicture}
+        \begin{list}{-}{}
+        \item When looking at a curved wire inside a magnetic field, the only relavent part is the hight differnece (or perpendicular component). This is because the parrellel component doesn't have an effect, as its cross product w/the field is 0   
+        \item This means to find the total force, you sum up all the vertical components
+        \item this is the same as adding all of them together 
+        \item which is the same thing after finding the length between the start and end point (denoted as \(L\)) and taking the cross product of it with the field 
+        \item This gives us the final equation of \(F_{wire} = I\vec{L}\times \vec{B}\)
+        \end{list}
+    \end{center}
+\end{example}
+
+\begin{eqboxed}{eq:TorqueOnCurrentLoop}{Torque On Current Loop}
+{}
+\tau_{loop} = IAB\sin\theta
+\end{eqboxed}
+
+\begin{eqboxed}{eq:MagneticDipoleMoment}{Magnetic Dipole Moment}
+{Where N is number of coils}
+\mu = NI\vec{A}
+\end{eqboxed}
+\begin{eqboxed}{eq:TorqueOnAloop}{Torque on a Loop}
+{}
+\vec{\tau} = \vec{\mu} \times \vec{B}
+\end{eqboxed}
+
+\begin{eqboxed}{eq:TorqueWork}{Torque Work}
+{}
+W = \int \tau d\theta
+\end{eqboxed}
+
+\begin{eqboxed}{eq:PotentialEnergyofDipoleinBField}{Potential Energy of Dipole in B Field}
+{}
+U(\theta) = -\vec{\mu} \dot \vec{B}
+\end{eqboxed}
+
