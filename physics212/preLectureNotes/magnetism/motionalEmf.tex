@@ -1,0 +1,122 @@
+\pagebreak
+\section{Motional EMF}
+\hrule
+\vspace{.5cm}
+
+Solving when the magnetic field is changing on the object.
+
+If a bar is moving through a magnetic field, the protron and electrons will be pushed to \textit{oppisite} ends of the bar, creating an \textit{electric} field.
+
+This field allows for a circuit to then be attached, in which case current will flow through depending on the velocity of the bar. 
+
+There is a lorentz force pushing the bar in the \textit{oppisite} direction of travel.
+
+\begin{example}
+\begin{center}
+    
+
+    \begin{tikzpicture}[>=Stealth]
+
+        % ==========================================
+        % 1. Magnetic Field (B) - Green Dots
+        % ==========================================
+        \foreach \x in {-1, 0.5, ..., 8.5} {
+            \foreach \y in {-1, 0.5, ..., 5} {
+                \fill[green!60!black] (\x,\y) circle (2.5pt);
+            }
+        }
+        \node[green!60!black, left] at (-1, 4.5) {\Large $B$};
+
+        % ==========================================
+        % 2. Rails and Resistor Loop
+        % ==========================================
+        % Conducting Rails
+        \draw[line width=3pt, gray!80] (0,3.5) -- (8.5,3.5);
+        \draw[line width=3pt, gray!80] (0,0) -- (8.5,0);
+        
+        % Left wiring
+        \draw[thick] (0,3.5) -- (0,2.5);
+        \draw[thick] (0,0) -- (0,1);
+        
+        % Resistor
+        \draw[thick, decoration={zigzag, segment length=3.5mm, amplitude=2mm}, decorate] 
+            (0,2.5) -- (0,1) node[midway, right, xshift=2mm] {\Large $R$};
+            
+        % Resistor +/- Labels
+        \node[gray, left] at (0, 2.7) {$-$};
+        \node[gray, left] at (0, 0.8) {$+$};
+
+        % ==========================================
+        % 3. Induced Current (I) Vectors
+        % ==========================================
+        % We draw a white line slightly thicker underneath to give it that "outlined" look over the rails
+        \draw[white, line width=3.5pt] (0.9, 3.5) -- (2.6, 3.5);
+        \draw[->, blue!80!black, line width=1.5pt] (1, 3.5) -- (2.5, 3.5) node[midway, below] {\Large $I$};
+        
+        \draw[white, line width=3.5pt] (2.6, 0) -- (0.9, 0);
+        \draw[->, blue!80!black, line width=1.5pt] (2.5, 0) -- (1, 0) node[midway, above] {\Large $I$};
+
+        % ==========================================
+        % 4. Moving Conducting Rod
+        % ==========================================
+        % The Rod
+        \filldraw[fill=gray!20, draw=gray, thick] (4.7, -0.3) rectangle (5.3, 3.8);
+        
+        % Velocity Vector (v)
+        \draw[->, cyan, line width=2pt] (5.3, 1.75) -- (7, 1.75) node[right] {\Large $v$};
+
+        % Internal Electric Field (E) Vector
+        \draw[->, black, line width=2.5pt] (5, 0.2) -- (5, 3.3) node[midway, right] {\Large $E$};
+
+        % Charges inside the rod (Red/negative top, Blue/positive bottom)
+        \fill[red!80!black] (4.8, 3.5) circle (1.2pt); \fill[red!80!black] (5.1, 3.4) circle (1.2pt);
+        \fill[red!80!black] (4.9, 3.2) circle (1.2pt); \fill[red!80!black] (5.2, 3.1) circle (1.2pt);
+        \fill[red!80!black] (4.85, 2.8) circle (1.2pt); \fill[red!80!black] (4.95, 2.6) circle (1.2pt);
+        \fill[red!80!black] (4.8, 1.9) circle (1.2pt); \fill[red!80!black] (5.15, 2.2) circle (1.2pt);
+        
+        \fill[blue!80!black] (4.9, 0.5) circle (1.2pt); \fill[blue!80!black] (5.1, 0.4) circle (1.2pt);
+        \fill[blue!80!black] (4.8, 0.8) circle (1.2pt); \fill[blue!80!black] (5.2, 0.7) circle (1.2pt);
+        \fill[blue!80!black] (4.95, 1.1) circle (1.2pt); \fill[blue!80!black] (4.85, 1.4) circle (1.2pt);
+
+        % ==========================================
+        % 5. Equivalent Battery EMF Symbol
+        % ==========================================
+        \draw[thick] (4.4, 3.5) -- (4.4, 2.1);
+        \draw[thick] (4.4, 0) -- (4.4, 1.4);
+        
+        % Negative terminal (top, short and thick)
+        \draw[thick, line width=2.5pt] (4.1, 2.1) -- (4.7, 2.1); 
+        % Positive terminal (bottom, long and thin)
+        \draw[thick] (3.8, 1.4) -- (5.0, 1.4); 
+        
+        % EMF Labels
+        \node[left] at (4.0, 1.75) {\Large $\varepsilon$};
+        \node[left] at (4.1, 2.1) {$-$};
+        \node[left] at (4.0, 1.4) {$+$};
+
+        % ==========================================
+        % 6. Length Dimension (L)
+        % ==========================================
+        \draw[<->, thick] (8.2, 0) -- (8.2, 3.5) node[midway, right] {\Large $L$};
+
+    \end{tikzpicture}
+\end{center}
+\end{example}
+
+
+\begin{eqboxed}{eq:barThroughMagField}{E field of a bar moving through B field}
+{}
+E = vB
+\end{eqboxed}
+
+If this bar is attached to rails that connect to a circuit, it will drive current through said current.
+
+\begin{eqboxed}{eq:potDiffOfBarMovingInBfield}{Potential Difference of Bar in B field}
+{}
+\upvarepsilon = vBL
+\end{eqboxed}
+
+\begin{eqboxed}{eq:motionalEMFGenerator}{Motional EMF of a generator}
+{}
+\upvarepsilon = \omega AB\cos(\omega t)
+\end{eqboxed}

@@ -98,6 +98,156 @@ W = \int \tau d\theta
 
 \begin{eqboxed}{eq:PotentialEnergyofDipoleinBField}{Potential Energy of Dipole in B Field}
 {}
-U(\theta) = -\vec{\mu} \dot \vec{B}
+U(\theta) = -\vec{\mu} \cdot \vec{B}
 \end{eqboxed}
 
+\begin{eqboxed}{eq:workOnCurrentCarryingLoop}{Work on a Current Carrying Loop in a Mangetic Field}
+{}
+W = \int_{\theta_o}^{\theta_2} (-\mu B \sin\theta)) d\theta 
+\end{eqboxed}
+
+\pagebreak
+\subsection{Examples}
+\hrule
+\vspace{.5cm}
+
+\begin{example}
+\textbf{Forces and Torques on Current}
+\vspace{.25cm}
+\hrule
+\vspace{.25cm}
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.2]
+    % --- Coordinates ---
+    \coordinate (O) at (0,0);
+    \coordinate (X) at (3,0);
+    \coordinate (Y) at (0,3);
+    \coordinate (B_dir) at (45:3.5); % Direction of B field
+
+    % --- Magnetic Field Lines (Green) ---
+    % Drawing several parallel lines at 45 degrees
+    \foreach \i in {-2,-1,...,2} {
+        \draw[green!50!black, thick, ->] 
+            ({-1.5+\i*0.6}, -1.5) -- ({1.5+\i*0.6}, 1.5);
+    }
+    % Label for B field
+    \node[green!50!black, anchor=west] at (2.2, 2.8) {$\vec{B} = 2.5\,\text{T}$};
+    \node[blue!90!white, anchor=west] at (2.2, 2.3) {(side view)};
+
+    % --- Axes ---
+    \draw[->] (-0.5,0) -- (X) node[right] {$x$};
+    \draw[->] (0,-0.5) -- (Y) node[left] {$y$};
+
+    % --- The Loop (Gray Bar) ---
+    % Side view of a loop appears as a line/cylinder
+    \draw[line width=3pt, gray!50] (-1.2,0) -- (1.2,0);
+    \draw[thick, gray] (-1.2,0) -- (1.2,0);
+
+    % --- Current Arrow (Blue) ---
+    \draw[blue, line width=2pt, ->] (-1.2,0) -- (-0.1,0) node[midway, below left] {$I$};
+
+    % --- Magnetic Moment (Red) ---
+    \draw[red!70!black, line width=2pt, ->] (O) -- (0,2) node[left, pos=0.7] {$\vec{\mu}$};
+
+    % --- Angles ---
+    % Reference line for the 45 degree angle to x-axis
+    \coordinate (B_ref) at (45:1.5);
+    \draw (0.8,0) arc (0:45:0.8) node[midway, right, xshift=2pt, yshift=2pt] {$45^\circ$};
+    
+    % Theta_1 angle (between y-axis and B)
+    \draw (0,1.2) arc (90:45:1.2);
+    \node at (67.5:1.5) {$\theta_1 = 45^\circ$};
+
+    % --- Rotation/Torque Arc (Blue) ---
+    \draw[blue!80!black, thick, ->] (130:1.8) arc (130:170:1.8);
+
+    % --- Parameters Text ---
+    \node[anchor=west, blue!80!black] at (3.5, 1.5) {$I = 3.1\,\text{A}$};
+    \node[anchor=west] at (3.5, 1.1) {$R = 26\,\text{cm}$};
+
+\end{tikzpicture}
+
+Use \ref{eq:PotentialEnergyofDipoleinBField} and \ref{eq:MagneticDipoleMoment}
+\[U_{\theta_1} = - \mu B \cos45\degree\]
+\[U_{\theta_2} = - \mu B \cos135\degree\]
+\[\Delta U = U(\theta_2) - U(\theta_1)\]
+\[\mu = NIA\]
+
+\end{center}
+\end{example}
+
+\pagebreak
+\begin{example}
+\textbf{Square Current Loop with Gravity}
+\vspace{.25cm}
+\hrule
+\vspace{.25cm}
+    A uniform magnetic field \(B = 1.8 T\) points in the \(+x\) direction. A square loop with side length \(d = \text{cm}\), number of turns \(20\), and current per turn \(I =.85 \text{A}\) pivots without friction around a vertical pin aligned with the -axis.
+
+    The left panel shows a side view of the loop in the xy-plane. The loop is tilted at an angle \(\theta = 30 \degree\) relative to the vertical xz-plane. The pivot is at the origin. The segment of the loop labeled CD lies in a plane that is rotated about the z-axis by the angle \(\theta\). Gravity acts downward along the direction, and the magnetic field points horizontally along +x .
+
+    The right panel shows the top-down view of the loop, which is square with both horizontal and vertical sides of length d. Segment CD lies across the top edge of the square, and current circulates counterclockwise in the loop when viewed from above.
+
+    A mass M is hung from one vertical side of the loop, either from point C or point D. The system is in equilibrium at the angle \(\theta\) described above.
+\begin{center}
+
+% Set the 3D perspective
+\tdplotsetmaincoords{70}{120}
+
+\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+
+
+    % --- 2. PLAN VIEW (Bottom Left) ---
+    \begin{scope}[shift={(3,-6)}, scale=0.8]
+        \draw[thick, ->] (-2,0) -- (2.5,0) node[right]{$x$};
+        \draw[thick, ->] (0,2) -- (0,-2) node[right]{$z$};
+        \draw[ultra thick, blue!70!black] (-1.2,-1.2) rectangle (1.2,1.2);
+        % Current arrows CCW
+        \draw[->, blue!80!white] (0,-1.2) -- (0.1,-1.2);
+        \draw[->, blue!80!white] (1.2,0) -- (1.2,0.1);
+        \draw[->, blue!80!white] (0,1.2) -- (-0.1,1.2);
+        \draw[->, blue!80!white] (-1.2,0) -- (-1.2,-0.1);
+
+        \draw[<->, dashed] (1.75,-1.2) -- (1.75,1.2) node[right] {d};
+
+        \filldraw (0,0) circle (0.05) node[below right]{};
+        \node at (0,-2.5) {\textbf{Top-Down View}};
+    \end{scope}
+
+    % --- 3. SIDE VIEW (Bottom Right) ---
+    \begin{scope}[shift={(-3,-6)}, scale=0.8]
+        \def\ang{30}
+        \draw[thick, ->] (-2,0) -- (2,0) node[right]{$x$};
+        \draw[thick, ->] (0,-2) -- (0,2) node[above]{$y$};
+
+        \draw[thick, green, ->] (-3,1.5) -- (3,1.5) node[above left]{$B$};
+        \draw[thick, green, ->] (-3,-1.5) -- (3,-1.5) node[below left]{$B$};
+
+
+
+        \begin{scope}[rotate=\ang]
+            \draw[ultra thick, blue!70!black] (-1.5,0) -- (1.5,0);
+            \node[below left] at (-1,0) {C};
+            \node[above right] at (1,0) {D};
+            % Forces
+            % \draw[->, purple, thick] (1.5,0) -- (1.5,-1) node[below left]{$F_D$};
+            % \draw[->, purple, thick] (-1.5,0) -- (-1.5,1) node[left]{$F_C$};
+            % Mass M
+            \draw[fill=black] (0,0) circle (0.1);
+            \node[below right] at (0,0) {pivot};
+            % \draw[->, red, thick] (-1.5,0) -- (-1.5,-1.5) node[below]{$Mg$};
+        \end{scope}
+        \draw (0.8,0) arc (0:\ang:0.8) node[midway, right]{$\theta$};
+        \node at (0,-3) {\textbf{Side View}};
+    \end{scope}
+
+\end{tikzpicture}
+
+\[N = 12, \quad I = .85, \quad I_{eff} = 10.2, \quad d = .2\text{m},\quad  B = 1.8 \text{T},\quad  \theta = 30\degree, \quad g \approx 9.7 \text{m/s}\]
+
+Using RHR, the magnetic moment points in the direction of \(+y\). Using \ref{eq:MagneticDipoleMoment}\dots
+\[\mu = NIA \rightrightarrows NID^2\]
+Using \ref{eq:TorqueOnAloop}\dots
+\[|\tau_m| = NId^2 B \cos\theta\]
+\end{center}
+\end{example}
